@@ -22,12 +22,15 @@
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
 							<form method="POST" class="my-login-validation" novalidate="">
+								@csrf
 								<div class="form-group">
 									<label for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
-									<div class="invalid-feedback">
-										Email is invalid
-									</div>
+									<input id="email" type="email" class="form-control" name="email" value="" required placeholder="Enter email">
+									<span class="text-danger"> 
+										@error('email')
+											{{ $message }}
+										@enderror
+									</span>
 								</div>
 
 								<div class="form-group">
@@ -36,10 +39,12 @@
 											Forgot Password?
 										</a>
 									</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
-								    <div class="invalid-feedback">
-								    	Password is required
-							    	</div>
+									<input id="password" type="password" class="form-control" name="password" required data-eye placeholder="Enter password">
+								    <span class="text-danger"> 
+										@error('password')
+											{{ $message }}
+										@enderror
+									</span>
 								</div>
 
 								<div class="form-group">

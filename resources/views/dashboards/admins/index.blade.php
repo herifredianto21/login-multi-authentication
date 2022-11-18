@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -23,4 +23,11 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+@extends('dashboards.admins.layouts.admin-dash-layout')
+@section('title', 'Dashboard')
+
+@section('content')
+    <h1> Hello Heri! </h1>
 @endsection

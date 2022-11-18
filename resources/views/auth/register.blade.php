@@ -20,28 +20,69 @@
 						<div class="card-body">
 							<h4 class="card-title">Register</h4>
 							<form method="POST" class="my-login-validation" novalidate="">
+								
+								@if ( Session::get('success'))
+									<div class="alert alert-success">
+										{{Session::get('success')}}
+									</div>
+								@endif
+								@if ( Session::get('error'))
+									<div class="alert alert-danger">
+										{{Session::get('error')}}
+									</div>
+								@endif
+
+								@csrf
 								<div class="form-group">
 									<label for="name">Name</label>
-									<input id="name" type="text" class="form-control" name="name" required autofocus>
-									<div class="invalid-feedback">
-										What's your name?
-									</div>
+									<input id="name" type="text" class="form-control" name="name" required autofocus placeholder="Enter name"
+									value="{{ old('name') }}">
+									<span class="text-danger"> 
+										@error('name')
+											{{ $message }}
+										@enderror
+									</span>
 								</div>
 
 								<div class="form-group">
 									<label for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" required>
-									<div class="invalid-feedback">
-										Your email is invalid
-									</div>
+									<input id="email" type="email" class="form-control" name="email" required placeholder="Enter email"
+									value="{{ old('email') }}">
+									<span class="text-danger"> 
+										@error('email')
+											{{ $message }}
+										@enderror
+									</span>
+								</div>
+
+								<div class="form-group">
+									<label for="favoriteColor">Favorite Color</label>
+									<input id="favoriteColor" type="text" class="form-control" name="favoriteColor" required autofocus placeholder="Enter Favorite Color">
+									<span class="text-danger"> 
+										@error('favoriteColor')
+											{{ $message }}
+										@enderror
+									</span>
 								</div>
 
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
-									<div class="invalid-feedback">
-										Password is required
-									</div>
+									<input id="password" type="password" class="form-control" name="password" required data-eye placeholder="Enter password">
+									<span class="text-danger"> 
+										@error('password')
+											{{ $message }}
+										@enderror
+									</span>
+								</div>
+
+								<div class="form-group">
+									<label for="password-confirm">Confirmation Password </label>
+									<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required data-eye placeholder="Enter confirm password">
+									<span class="text-danger"> 
+										@error('password_confirmation')
+											{{ $message }}
+										@enderror
+									</span>
 								</div>
 
 								<div class="form-group">
